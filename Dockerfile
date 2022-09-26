@@ -23,8 +23,6 @@ RUN \
     plasma-desktop \
     plasma-discover \
     plasma-workspace-xorg && \
-  mkdir root root/defaults && \
-  wget -P root/defaults/ https://github.com/linuxserver/docker-webtop/raw/fedora-kde/root/defaults/startwm.sh && \
   echo "**** cleanup ****" && \
   dnf autoremove -y && \
   dnf clean all && \
@@ -32,6 +30,7 @@ RUN \
     /tmp/*
 
 # add local files
+RUN mkdir root root/defaults && wget -P root/defaults/ https://github.com/linuxserver/docker-webtop/raw/fedora-kde/root/defaults/startwm.sh
 COPY /root /
 
 # ports and volumes
