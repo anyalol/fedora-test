@@ -12,7 +12,7 @@ RUN \
     breeze-icon-theme \
     dolphin \
     firefox \
-    git \
+    wget \
     kate \
     kde-gtk-config \
     kde-settings-pulseaudio \
@@ -23,8 +23,9 @@ RUN \
     plasma-desktop \
     plasma-discover \
     plasma-workspace-xorg && \
+  mkdir root root/defaults && \
+  wget -P root/defaults/ https://github.com/linuxserver/docker-webtop/raw/fedora-kde/root/defaults/startwm.sh && \
   echo "**** cleanup ****" && \
-  git clone --depth=1 -b fedora-kde https://github.com/linuxserver/docker-webtop . && \
   dnf autoremove -y && \
   dnf clean all && \
   rm -rf \
